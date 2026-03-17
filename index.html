@@ -1,84 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lilian's Data Visualization Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lilian's San Francisco Crime Visualizations</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-      background: #fafafa;
-      color: #222;
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe0f0, #ffd1ea, #ffc2e2, #ffeaf6);
+      color: #4a1435;
     }
-    h1, h2 {
-      color: #111;
-    }
-    .section {
-      margin-bottom: 50px;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-    a {
-      color: #0a58ca;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .button-link {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #0a58ca;
+
+    header {
+      text-align: center;
+      padding: 80px 20px 50px;
+      background: linear-gradient(135deg, rgba(255, 105, 180, 0.85), rgba(255, 182, 193, 0.9));
       color: white;
-      border-radius: 6px;
-      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     }
-    .button-link:hover {
-      background: #084298;
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.18);
+    }
+
+    header p {
+      margin-top: 18px;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 40px auto 60px;
+    }
+
+    .intro-box {
+      background: rgba(255, 255, 255, 0.72);
+      border: 2px solid rgba(255, 105, 180, 0.25);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 35px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.14);
+      backdrop-filter: blur(8px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(255, 105, 180, 0.18);
+      border: 2px solid rgba(255, 182, 193, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 18px 36px rgba(255, 20, 147, 0.22);
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #c21875;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid rgba(255, 182, 193, 0.35);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, #ff4fa3, #ff87c5);
+      color: white;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(255, 20, 147, 0.25);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px 50px;
+      color: #8a3b64;
+      font-size: 0.95rem;
+    }
+
+    .sparkle {
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>San Francisco Crime Visualizations</h1>
-  <p>
-    This site showcases static and interactive visualizations exploring crime patterns in San Francisco.
-  </p>
+  <header>
+    <h1>💖 San Francisco Crime Visualizations 💖</h1>
+    <p>
+      A colorful mini data visualization portfolio exploring patterns in San Francisco crime data
+      through static charts, interactive graphics, and maps.
+    </p>
+  </header>
 
-  <div class="section">
-    <h2>Static Visualization</h2>
-    <p>Yearly trends for selected crime categories in San Francisco.</p>
-    <img src="images/yearly_crime_trends.png" alt="Yearly crime trends in San Francisco">
-  </div>
+  <main class="container">
+    <section class="intro-box">
+      <h2>✨ About This Site</h2>
+      <p>
+        This project brings together multiple visualizations created from San Francisco crime data.
+        The site includes static figures for quick trend summaries, an interactive chart for deeper
+        exploration, and a map for spatial patterns across the city.
+      </p>
+    </section>
 
-  <div class="section">
-    <h2>Additional Static Visualization</h2>
-    <p>Box plots summarizing San Francisco crime distributions.</p>
-    <img src="images/box_plots_sf_crime.png" alt="Box plots of San Francisco crime data">
-  </div>
+    <section class="grid">
+      <article class="card">
+        <img src="images/yearly_crime_trends.png" alt="Yearly crime trends chart">
+        <div class="card-content">
+          <h2>📈 Yearly Crime Trends</h2>
+          <p>
+            This visualization shows how selected crime categories changed over time from 2018 to 2025.
+          </p>
+        </div>
+      </article>
 
-  <div class="section">
-    <h2>Interactive Visualization</h2>
-    <p>Explore assault patterns by district in this interactive chart.</p>
-    <a class="button-link" href="visualizations/assault_by_district.html" target="_blank">Open interactive chart</a>
-  </div>
+      <article class="card">
+        <img src="images/box_plots_sf_crime.png" alt="Box plots of San Francisco crime data">
+        <div class="card-content">
+          <h2>🌸 Crime Distribution Box Plots</h2>
+          <p>
+            These box plots summarize the distribution of crime-related patterns and highlight variation across categories.
+          </p>
+        </div>
+      </article>
 
-  <div class="section">
-    <h2>Interactive Folium Map</h2>
-    <p>Explore the prostitution heatmap across San Francisco.</p>
-    <a class="button-link" href="visualizations/prostitution_heatmap.html" target="_blank">Open Folium map</a>
-  </div>
+      <article class="card">
+        <div class="card-content">
+          <h2>🧞‍♀️ Interactive Assault by District</h2> 
+          <p>
+            Explore district-level assault patterns in an interactive visualization. Open it to hover,
+            zoom, and inspect the chart in more detail.
+          </p>
+          <a class="button" href="visualizations/assault_by_district.html" target="_blank">Open Chart</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h2>💅 Heatmap of prostitution </h2>
+          <p>
+            This Folium map shows the geography of prostitution-related incidents in San Francisco.
+            Open the map to pan, zoom, and explore hotspots.
+          </p>
+          <a class="button" href="visualizations/prostitution_heatmap.html" target="_blank">Open Map</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="images/yearly_crime_trends_merged.png" alt="Merged yearly crime trends figure">
+        <div class="card-content">
+          <h2>🎀 Additional Trend View</h2>
+          <p>
+            A second static figure offering another view of yearly crime patterns across categories.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p><span class="sparkle">✨</span> Created by Lilian for GitHub Pages <span class="sparkle">✨</span></p>
+  </footer>
 </body>
 </html>
